@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 
 interface LockPadProps {
   onUnlock: () => void;
+  fit: { left: number; top: number; scale: number };
 }
 
 const ROWS = [
@@ -14,7 +15,7 @@ const ROWS = [
   ["*", "0", "#"],
 ];
 
-export default function LockPad({ onUnlock }: LockPadProps) {
+export default function LockPad({ onUnlock, fit }: LockPadProps) {
   const [pin, setPin] = useState<string[]>([]);
   const [status, setStatus] = useState<"idle" | "success">("idle");
   const containerRef = useRef<HTMLDivElement>(null);
@@ -72,13 +73,14 @@ export default function LockPad({ onUnlock }: LockPadProps) {
 
   return (
     /*
-     * Positioned to overlay the door keypad visible at LOCK_FRAME (frame 155).
-     * Keypad center in the cropped video frame is at ~51% from left, ~68% from top
-     * (source video is cropped to hide a watermark — see CanvasSequence drawFrame).
+     * Positioned/scaled to exactly overlay the door keypad visible at
+     * LOCK_FRAME. `fit` is computed in CanvasSequence by re-running the same
+     * crop + cover-fit math used to draw the video, so this lines up with
+     * the keypad for any viewport size or aspect ratio (see updateKeypadFit).
      */
     <div
       className="absolute z-30 pointer-events-none"
-      style={{ left: "51%", top: "68%", transform: "translate(-50%, -50%)" }}
+      style={{ left: fit.left, top: fit.top, transform: `translate(-50%, -50%) scale(${fit.scale})` }}
     >
       <div
         ref={containerRef}

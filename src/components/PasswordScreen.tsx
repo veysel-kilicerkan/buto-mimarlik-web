@@ -137,7 +137,7 @@ export default function PasswordScreen({ onUnlock }: PasswordScreenProps) {
 
         <button
           type="submit"
-          className="mt-2 px-8 py-3 border border-white/60 text-white/80 text-xs tracking-[0.3em] uppercase hover:border-earth hover:text-white transition-all duration-300"
+          className="mt-2 px-10 py-4 border border-white/60 text-white/80 text-xs tracking-[0.3em] uppercase hover:bg-white/10 hover:border-earth hover:text-white transition-colors duration-500"
           style={{ fontFamily: "var(--font-jakarta)" }}
         >
           Giriş

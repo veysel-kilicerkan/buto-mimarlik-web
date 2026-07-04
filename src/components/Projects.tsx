@@ -71,7 +71,7 @@ export default function Projects() {
       {/* Heading */}
       <div
         ref={headingRef}
-        className="px-6 md:px-16 lg:px-24 pt-24 pb-12"
+        className="max-w-6xl mx-auto px-8 md:px-12 lg:px-16 pt-24 pb-12"
         style={{ opacity: 0 }}
       >
         <span
@@ -81,7 +81,7 @@ export default function Projects() {
           Portföy
         </span>
         <h2
-          className="mt-4 text-4xl md:text-5xl text-white"
+          className="mt-4 text-4xl md:text-5xl lg:text-6xl text-white"
           style={{ fontFamily: "var(--font-playfair)" }}
         >
           Projeler
@@ -143,7 +143,7 @@ export default function Projects() {
         </div>
       </div>
 
-      <div className="px-6 md:px-16 lg:px-24 py-8 flex items-center gap-4">
+      <div className="max-w-6xl mx-auto px-8 md:px-12 lg:px-16 py-8 flex items-center gap-4">
         <div className="h-px flex-1 bg-white/10" />
         <span
           className="text-xs text-mist tracking-[0.3em]"

@@ -1,5 +1,19 @@
 @import "tailwindcss";
 
+/*
+ * Type/spacing conventions used across section components (no @theme tokens
+ * for these — a responsive triplet like text-4xl md:text-5xl lg:text-6xl
+ * can't be captured by a single --text-* token, so components just apply
+ * these literal class patterns consistently instead):
+ * - Section h2 heading:      text-4xl md:text-5xl lg:text-6xl
+ * - Card/item title (h3):    text-2xl md:text-3xl
+ * - Eyebrow/label text:      text-xs tracking-[0.5em] uppercase
+ * - Standalone body copy:    text-base   |   field values / dense meta: text-sm
+ * - Section container:       max-w-6xl mx-auto px-8 md:px-12 lg:px-16
+ * - Outline CTA button:      px-10 py-4 border ... text-xs tracking-[0.3em]
+ *                            uppercase, no rounded-*, hover fill + duration-500
+ */
+
 @theme inline {
   --color-cream: #f5f0e8;
   --color-cream-dark: #ede5d6;
@@ -13,60 +27,70 @@
   --font-sans: var(--font-jakarta);
 }
 
-:root {
-  --background: #f5f0e8;
-  --foreground: #1a1209;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  overscroll-behavior: none;
-  scroll-behavior: auto;
-  overflow-anchor: none;
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-jakarta), sans-serif;
-  cursor: none;
-  overflow-x: hidden;
-}
-
-canvas {
-  touch-action: none;
-  display: block;
-}
-
-/* Hide default cursor on all interactive elements */
-a,
-button,
-input,
-[role="button"] {
-  cursor: none;
-}
-
-/* Custom cursor hidden on touch devices */
-@media (pointer: coarse) {
-  body {
-    cursor: auto;
+/*
+ * IMPORTANT: everything below must stay inside @layer base. Tailwind v4's
+ * own reset/utilities are emitted into CSS cascade layers (base, utilities,
+ * ...), and unlayered CSS always beats layered CSS regardless of specificity
+ * or source order. A plain top-level `* { margin: 0 }` here previously
+ * clobbered every Tailwind spacing utility site-wide (mx-auto, px-*, etc.
+ * all silently resolved to 0) because it sat outside the layer system.
+ */
+@layer base {
+  :root {
+    --background: #f5f0e8;
+    --foreground: #1a1209;
   }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    overscroll-behavior: none;
+    scroll-behavior: auto;
+    overflow-anchor: none;
+  }
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-jakarta), sans-serif;
+    cursor: none;
+    overflow-x: hidden;
+  }
+
+  canvas {
+    touch-action: none;
+    display: block;
+  }
+
+  /* Hide default cursor on all interactive elements */
   a,
   button,
   input,
   [role="button"] {
-    cursor: auto;
+    cursor: none;
   }
-}
 
-/* Smooth image rendering */
-img {
-  image-rendering: auto;
+  /* Custom cursor hidden on touch devices */
+  @media (pointer: coarse) {
+    body {
+      cursor: auto;
+    }
+    a,
+    button,
+    input,
+    [role="button"] {
+      cursor: auto;
+    }
+  }
+
+  /* Smooth image rendering */
+  img {
+    image-rendering: auto;
+  }
 }

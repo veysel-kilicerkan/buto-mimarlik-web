@@ -38,16 +38,14 @@ export default function TopBar({ visible, phase }: TopBarProps) {
   const onDark = phase === "scrolling";
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-9 py-6 pointer-events-none">
+    <div className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 md:px-12 lg:px-16 py-6 pointer-events-none">
       {/* Logo — always visible top-left */}
       <div ref={logoRef} className="pointer-events-auto" style={{ opacity: 0 }}>
         <a href="#" aria-label="BUTO Mimarlık — ana sayfa">
           <span
-            className="block leading-none transition-colors duration-500"
+            className="block leading-none tracking-[0.32em] text-lg md:text-xl lg:text-2xl transition-colors duration-500"
             style={{
               fontFamily: "var(--font-playfair)",
-              fontSize: 22,
-              letterSpacing: "0.32em",
               color: onDark ? "rgba(245,240,232,0.92)" : "#1a1209",
               textShadow: onDark ? "0 1px 12px rgba(0,0,0,0.5)" : "none",
             }}
@@ -55,11 +53,9 @@ export default function TopBar({ visible, phase }: TopBarProps) {
             BUTO
           </span>
           <span
-            className="block transition-colors duration-500"
+            className="block tracking-[0.45em] text-[9px] md:text-[10px] lg:text-[11px] transition-colors duration-500"
             style={{
               fontFamily: "var(--font-jakarta)",
-              fontSize: 9,
-              letterSpacing: "0.45em",
               color: onDark ? "rgba(245,240,232,0.45)" : "#b8a898",
               marginTop: 2,
             }}
@@ -98,7 +94,7 @@ export default function TopBar({ visible, phase }: TopBarProps) {
         </a>
 
         <a
-          href="#"
+          href="https://www.instagram.com/butomimarlik/"
           target="_blank"
           rel="noopener noreferrer"
           className="group"
