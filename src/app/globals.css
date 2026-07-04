@@ -29,6 +29,7 @@
 html {
   overscroll-behavior: none;
   scroll-behavior: auto;
+  overflow-anchor: none;
 }
 
 body {

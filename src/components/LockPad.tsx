@@ -73,11 +73,12 @@ export default function LockPad({ onUnlock }: LockPadProps) {
   return (
     /*
      * Positioned to overlay the door keypad visible at LOCK_FRAME (frame 155).
-     * Keypad center in the video frame is at ~50% from left, ~51% from top.
+     * Keypad center in the cropped video frame is at ~51% from left, ~68% from top
+     * (source video is cropped to hide a watermark — see CanvasSequence drawFrame).
      */
     <div
       className="absolute z-30 pointer-events-none"
-      style={{ left: "50%", top: "51%", transform: "translate(-50%, -50%)" }}
+      style={{ left: "51%", top: "68%", transform: "translate(-50%, -50%)" }}
     >
       <div
         ref={containerRef}

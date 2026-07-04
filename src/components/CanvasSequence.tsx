@@ -48,13 +48,21 @@ export default function CanvasSequence({ onComplete }: CanvasSequenceProps) {
 
       const w = canvas.width;
       const h = canvas.height;
-      const scale = Math.max(w / img.naturalWidth, h / img.naturalHeight);
-      const sw = img.naturalWidth * scale;
-      const sh = img.naturalHeight * scale;
+
+      // Crop out the AI-generation watermark fixed in the bottom-right corner
+      // of every frame — keep top intact (roofline), trim mostly from the bottom.
+      const cropX = img.naturalWidth * 0.13;
+      const cropY = 0;
+      const cropW = img.naturalWidth * 0.74;
+      const cropH = img.naturalHeight * 0.74;
+
+      const scale = Math.max(w / cropW, h / cropH);
+      const sw = cropW * scale;
+      const sh = cropH * scale;
       const sx = (w - sw) / 2;
       const sy = (h - sh) / 2;
       ctx.clearRect(0, 0, w, h);
-      ctx.drawImage(img, sx, sy, sw, sh);
+      ctx.drawImage(img, cropX, cropY, cropW, cropH, sx, sy, sw, sh);
     },
     [getImages]
   );
