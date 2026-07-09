@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -72,7 +73,7 @@ export default function About() {
         {/* Centered section label */}
         <div className="text-center mb-16 md:mb-20">
           <span
-            className="text-xs tracking-[0.5em] text-mist uppercase"
+            className="text-sm md:text-base tracking-[0.5em] text-mist uppercase font-semibold"
             style={{ fontFamily: "var(--font-jakarta)" }}
           >
             Hakkımızda
@@ -97,20 +98,16 @@ export default function About() {
 
             <div ref={textRef} className="space-y-8" style={{ opacity: 0 }}>
               <p
-                className="text-ink/70 text-base leading-loose"
+                className="text-ink/70 text-lg md:text-xl leading-relaxed"
                 style={{ fontFamily: "var(--font-jakarta)" }}
               >
-                BUTO Mimarlık, tasarımın yalnızca estetik bir pratik olmadığına,
-                aynı zamanda insan deneyimini şekillendiren derin bir dil olduğuna inanır.
-                Her proje, bir mekanın potansiyelini keşfetme yolculuğudur.
+                <span className="font-semibold">BUTO MİMARLIK LTD. ŞTİ</span> olarak; mimari ve iç mimari proje, tasarım ve uygulama alanlarında çalışmalar yapmaktayız. Tasarımın yalnızca estetik bir pratik değil, insan deneyimini şekillendiren derin bir dil olduğuna inanıyoruz.
               </p>
               <p
-                className="text-ink/70 text-base leading-loose"
+                className="text-ink/70 text-lg md:text-xl leading-relaxed mt-6"
                 style={{ fontFamily: "var(--font-jakarta)" }}
               >
-                Fonksiyonel sınırlar içinde özgürce hareket eden tasarım anlayışımızla;
-                konut, ticari ve karma kullanımlı projelerde insanı merkeze alan
-                çözümler üretiyoruz.
+                Her bir projeyi, mekanın gizli potansiyelini ortaya çıkarma yolculuğu olarak görüyoruz. Fonksiyonellik ve estetiği mükemmel bir dengede buluşturarak, vizyoner ve kullanıcı odaklı yaşam alanları tasarlıyor; hayallerinizi gerçeğe dönüştüren kalıcı eserler üretiyoruz.
               </p>
 
               <div className="pt-6">
@@ -124,19 +121,17 @@ export default function About() {
             </div>
           </div>
 
-          {/* Image placeholder */}
+          {/* Image */}
           <div
             ref={imageRef}
             className="relative h-80 md:h-[540px] bg-cream-dark overflow-hidden"
           >
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span
-                className="text-mist text-xs tracking-[0.3em] uppercase"
-                style={{ fontFamily: "var(--font-jakarta)" }}
-              >
-                Görsel Eklenecek
-              </span>
-            </div>
+            <Image
+              src="/images/projects/toraman-tekstil/toraman-tekstil-yonetim-odasi-ic-mimari.png"
+              alt="BUTO Mimarlık Ofis"
+              fill
+              className="object-cover"
+            />
             <div className="absolute top-5 left-5 right-5 bottom-5 border border-earth/20 pointer-events-none" />
           </div>
         </div>

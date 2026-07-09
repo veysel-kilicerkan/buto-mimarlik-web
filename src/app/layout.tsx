@@ -18,9 +18,9 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 const SITE_URL = "https://butomimarlik.com";
-const SITE_TITLE = "BUTO Mimarlık — Mimarlık, Dekorasyon ve İnşaat Hizmetleri";
+const SITE_TITLE = "BUTO Mimarlık | Mimarlık, İç Mimarlık ve İnşaat Hizmetleri";
 const SITE_DESCRIPTION =
-  "BUTO Mimarlık LTD. ŞTİ. — dekorasyon ve tadilat, restorasyon ve renovasyon, inşaat taahhüt, yapı güçlendirme, proje ve danışmanlık hizmetleri. İstanbul merkezli mimarlık ofisi.";
+  "BUTO Mimarlık LTD. ŞTİ. — Mimari ve iç mimari proje tasarımı, dekorasyon ve tadilat, restorasyon, inşaat taahhüt, yapı güçlendirme ve danışmanlık hizmetleri. İstanbul merkezli vizyoner mimarlık ofisi.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -32,12 +32,30 @@ export const metadata: Metadata = {
   keywords: [
     "BUTO Mimarlık",
     "mimarlık ofisi İstanbul",
+    "iç mimarlık ofisi",
+    "mimari proje çizimi",
     "dekorasyon ve tadilat",
     "restorasyon ve renovasyon",
-    "inşaat taahhüt",
+    "inşaat taahhüt firması",
     "yapı güçlendirme",
     "proje ve danışmanlık hizmetleri",
+    "Güneşli mimarlık",
+    "Bağcılar mimarlık",
+    "mimari tasarım",
   ],
+  authors: [{ name: "BUTO Mimarlık" }],
+  creator: "BUTO Mimarlık",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   alternates: {
     canonical: SITE_URL,
   },

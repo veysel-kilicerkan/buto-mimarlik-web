@@ -21,9 +21,9 @@ interface CanvasSequenceProps {
 // fixed CSS percentage that only happens to line up at one window size.
 const SRC_W = 1920;
 const SRC_H = 1080;
-const CROP_X_FRAC = 0.13;
-const CROP_W_FRAC = 0.74;
-const CROP_H_FRAC = 0.74;
+const CROP_X_FRAC = 0.0;
+const CROP_W_FRAC = 1.0;
+const CROP_H_FRAC = 1.0;
 // Keypad panel center/size measured directly on frame-0155.webp (LOCK_FRAME).
 const KEYPAD_SRC = { x: 975, y: 540, width: 150 };
 
@@ -39,7 +39,6 @@ export default function CanvasSequence({ onComplete }: CanvasSequenceProps) {
   const isLockedRef = useRef(false);
   const isUnlockedRef = useRef(false);
   const autoPlayRunningRef = useRef(false);
-  const wheelPreventRef = useRef<((e: Event) => void) | null>(null);
 
   // Welcome overlay refs — shown on first frame, fades when scroll starts
   const welcomeRef = useRef<HTMLDivElement>(null);
@@ -90,10 +89,10 @@ export default function CanvasSequence({ onComplete }: CanvasSequenceProps) {
 
       // Crop out the AI-generation watermark fixed in the bottom-right corner
       // of every frame — keep top intact (roofline), trim mostly from the bottom.
-      const cropX = img.naturalWidth * 0.13;
+      const cropX = 0;
       const cropY = 0;
-      const cropW = img.naturalWidth * 0.74;
-      const cropH = img.naturalHeight * 0.74;
+      const cropW = img.naturalWidth;
+      const cropH = img.naturalHeight;
 
       const scale = Math.max(w / cropW, h / cropH);
       const sw = cropW * scale;
@@ -134,33 +133,7 @@ export default function CanvasSequence({ onComplete }: CanvasSequenceProps) {
     updateKeypadFit(canvas.width, canvas.height);
   }, [drawFrame, updateKeypadFit]);
 
-  // Block scroll while lock pad is active
-  useEffect(() => {
-    if (!showLock) {
-      if (wheelPreventRef.current) {
-        window.removeEventListener("wheel", wheelPreventRef.current);
-        window.removeEventListener("touchmove", wheelPreventRef.current);
-        wheelPreventRef.current = null;
-      }
-      return;
-    }
-    const prevent = (e: Event) => e.preventDefault();
-    wheelPreventRef.current = prevent;
-    window.addEventListener("wheel", prevent, { passive: false });
-    window.addEventListener("touchmove", prevent, { passive: false });
-    return () => {
-      window.removeEventListener("wheel", prevent);
-      window.removeEventListener("touchmove", prevent);
-      wheelPreventRef.current = null;
-    };
-  }, [showLock]);
-
   const handleUnlock = useCallback(() => {
-    if (wheelPreventRef.current) {
-      window.removeEventListener("wheel", wheelPreventRef.current);
-      window.removeEventListener("touchmove", wheelPreventRef.current);
-      wheelPreventRef.current = null;
-    }
     setShowLock(false);
     isLockedRef.current = false;
     isUnlockedRef.current = true;

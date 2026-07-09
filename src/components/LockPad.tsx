@@ -25,8 +25,8 @@ export default function LockPad({ onUnlock, fit }: LockPadProps) {
     if (!containerRef.current) return;
     gsap.fromTo(
       containerRef.current,
-      { opacity: 0, scale: 0.92 },
-      { opacity: 1, scale: 1, duration: 0.4, ease: "power2.out" }
+      { opacity: 0, scale: 0.75 },
+      { opacity: 1, scale: 0.85, duration: 0.4, ease: "power2.out" }
     );
   }, []);
 
@@ -87,6 +87,20 @@ export default function LockPad({ onUnlock, fit }: LockPadProps) {
         className="pointer-events-auto"
         style={{ opacity: 0 }}
       >
+        {/* Hint Text */}
+        <div 
+          style={{ 
+            color: "rgba(255,255,255,0.7)", 
+            fontSize: 10, 
+            fontFamily: "var(--font-jakarta)", 
+            textAlign: "center", 
+            marginBottom: 8,
+            letterSpacing: "0.05em",
+            textShadow: "0 1px 4px rgba(0,0,0,0.8)"
+          }}
+        >
+          Herhangi bir pin girebilirsiniz
+        </div>
         {/* Keypad shell — matches door keypad in the video */}
         <div
           style={{

@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 import MagneticButton from "./MagneticButton";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -74,9 +75,19 @@ export default function Hero() {
       ref={sectionRef}
       className="relative min-h-screen flex flex-col items-center justify-center bg-cream overflow-hidden"
     >
+      {/* Subtle background image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/projects/toraman-tekstil/toraman-tekstil-mimari-proje-kusbakisi.jpg"
+          alt="Mimari Arkaplan"
+          fill
+          className="object-cover opacity-[0.15] mix-blend-multiply grayscale-[30%]"
+        />
+      </div>
+
       {/* Subtle texture overlay */}
       <div
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        className="absolute inset-0 opacity-[0.05] pointer-events-none z-0"
         style={{
           backgroundImage:
             "repeating-linear-gradient(0deg, #1a1209 0px, #1a1209 1px, transparent 1px, transparent 60px), repeating-linear-gradient(90deg, #1a1209 0px, #1a1209 1px, transparent 1px, transparent 60px)",

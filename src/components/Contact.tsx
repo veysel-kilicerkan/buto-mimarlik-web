@@ -126,8 +126,8 @@ export default function Contact() {
           <div className="relative h-80 md:h-full min-h-[320px] border border-earth/20 overflow-hidden">
             <iframe
               title="BUTO Mimarlık Konum"
-              src="https://www.google.com/maps?q=15+Temmuz+Mah.+Ko%C3%A7man+Cad.+Demirkol+Plaza+B2+Blok+No%3A54+Kat%3A4+G%C3%BCne%C5%9Fli-Ba%C4%9Fc%C4%B1lar+%C4%B0stanbul&output=embed"
-              className="absolute inset-0 w-full h-full grayscale-[35%] contrast-[1.05] sepia-[8%]"
+              src="https://maps.google.com/maps?q=Demirkol%20Plaza%20G%C3%BCne%C5%9Fli%20Ba%C4%9Fc%C4%B1lar&t=&z=14&ie=UTF8&iwloc=&output=embed"
+              className="absolute inset-0 w-full h-full grayscale-[25%] contrast-[1.05]"
               style={{ border: 0 }}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
@@ -136,34 +136,68 @@ export default function Contact() {
         </div>
 
         {/* Footer bar */}
-        <div className="mt-28 pt-10 border-t border-cream-dark flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="mt-28 pt-10 border-t border-cream-dark flex flex-col md:flex-row items-center justify-between gap-6 relative">
           <span
             className="text-xs text-mist tracking-[0.25em]"
             style={{ fontFamily: "var(--font-jakarta)" }}
           >
             © 2026 BUTO Mimarlık. Tüm hakları saklıdır.
           </span>
-          <div className="flex items-center gap-10">
+          
+          <div className="flex items-center gap-8">
+            <a href="#hakkimizda" className="text-xs text-ink/70 hover:text-earth tracking-[0.2em] uppercase transition-colors" style={{ fontFamily: "var(--font-jakarta)" }}>
+              Hakkımızda
+            </a>
+            <a href="#projeler" className="text-xs text-ink/70 hover:text-earth tracking-[0.2em] uppercase transition-colors" style={{ fontFamily: "var(--font-jakarta)" }}>
+              Projeler
+            </a>
+          </div>
+
+          <div className="flex items-center gap-6">
             <a
               href="https://www.instagram.com/butomimarlik/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs text-mist hover:text-earth tracking-[0.25em] transition-colors duration-300"
-              style={{ fontFamily: "var(--font-jakarta)" }}
+              className="group flex items-center justify-center w-10 h-10 rounded-full bg-ink text-cream hover:bg-earth transition-colors duration-300 shadow-md"
+              aria-label="Instagram"
             >
-              Instagram
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
+              </svg>
             </a>
-            <span className="w-px h-3 bg-mist/30" />
             <a
               href="https://www.linkedin.com/company/buto-mi%CC%87marlik-ve-i%CC%87n%C5%9Faat-ltd-%C5%9Fti%CC%87/posts/?feedView=all"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs text-mist hover:text-earth tracking-[0.25em] transition-colors duration-300"
-              style={{ fontFamily: "var(--font-jakarta)" }}
+              className="group flex items-center justify-center w-10 h-10 rounded-full bg-ink text-cream hover:bg-earth transition-colors duration-300 shadow-md"
+              aria-label="LinkedIn"
             >
-              LinkedIn
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                <rect x="2" y="9" width="4" height="12" />
+                <circle cx="4" cy="4" r="2" />
+              </svg>
             </a>
           </div>
+        </div>
+
+        <div className="mt-8 flex justify-center">
+          <button 
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="flex flex-col items-center gap-2 group"
+            aria-label="Yukarı Dön"
+          >
+            <div className="w-12 h-12 rounded-full border border-earth/40 flex items-center justify-center text-earth group-hover:bg-earth group-hover:text-cream transition-all duration-300">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M18 15l-6-6-6 6" />
+              </svg>
+            </div>
+            <span className="text-[10px] tracking-[0.2em] text-mist group-hover:text-earth transition-colors" style={{ fontFamily: "var(--font-jakarta)" }}>
+              YUKARI DÖN
+            </span>
+          </button>
         </div>
 
         {/* Credit */}
