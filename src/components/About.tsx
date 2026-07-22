@@ -90,8 +90,8 @@ export default function About() {
               className="text-4xl md:text-5xl lg:text-6xl text-ink leading-tight mb-12"
               style={{ fontFamily: "var(--font-playfair)" }}
             >
-              Mekanı <br />
-              <span className="text-earth italic">Şiire</span> Dönüştürüyoruz
+              <span className="text-earth italic">İlham</span> Veren <br />
+              Mekanlar Tasarlıyoruz
             </h2>
 
             <div className="h-px w-16 bg-earth mb-12" />
@@ -115,7 +115,7 @@ export default function About() {
                   className="text-xs tracking-[0.45em] text-mist uppercase"
                   style={{ fontFamily: "var(--font-jakarta)" }}
                 >
-                  Kuruluş — 2018
+                  Kuruluş — 2021
                 </span>
               </div>
             </div>
@@ -128,7 +128,7 @@ export default function About() {
           >
             <Image
               src="/images/projects/toraman-tekstil/toraman-tekstil-yonetim-odasi-ic-mimari.png"
-              alt="BUTO Mimarlık Ofis"
+              alt="BUTO Mimarlık iç mimari tasarım felsefesi - mimarlık ve iç mimarlık ofisi"
               fill
               className="object-cover"
             />

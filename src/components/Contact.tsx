@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Particles from "./Particles";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -36,14 +37,16 @@ export default function Contact() {
     <section
       id="iletisim"
       ref={sectionRef}
-      className="py-32 md:py-44 bg-cream"
+      className="pt-32 md:pt-44 pb-14 md:pb-16 bg-cream"
     >
       <div
         ref={contentRef}
-        className="max-w-6xl mx-auto px-8 md:px-12 lg:px-16"
+        className="relative overflow-hidden max-w-6xl mx-auto px-8 md:px-12 lg:px-16"
         style={{ opacity: 0 }}
       >
-        <div className="text-center mb-16 md:mb-20">
+        <Particles count={70} />
+
+        <div className="relative z-10 text-center mb-16 md:mb-20">
           <span
             className="text-xs tracking-[0.5em] text-mist uppercase"
             style={{ fontFamily: "var(--font-jakarta)" }}
@@ -59,7 +62,7 @@ export default function Contact() {
           <div className="mt-6 h-px w-12 bg-earth mx-auto" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
           <div>
             <div className="space-y-10">
               <div>
@@ -74,6 +77,20 @@ export default function Contact() {
                   style={{ fontFamily: "var(--font-jakarta)" }}
                 >
                   info@butomimarlik.com
+                </span>
+              </div>
+              <div>
+                <span
+                  className="block text-xs tracking-[0.35em] text-mist uppercase mb-2"
+                  style={{ fontFamily: "var(--font-jakarta)" }}
+                >
+                  Şahsi Mail
+                </span>
+                <span
+                  className="text-ink text-sm tracking-wide"
+                  style={{ fontFamily: "var(--font-jakarta)" }}
+                >
+                  busratoraman.f@gmail.com
                 </span>
               </div>
               <div>
@@ -136,14 +153,14 @@ export default function Contact() {
         </div>
 
         {/* Footer bar */}
-        <div className="mt-28 pt-10 border-t border-cream-dark flex flex-col md:flex-row items-center justify-between gap-6 relative">
+        <div className="relative z-10 mt-16 pt-8 border-t border-cream-dark flex flex-col md:flex-row items-center justify-between gap-6">
           <span
             className="text-xs text-mist tracking-[0.25em]"
             style={{ fontFamily: "var(--font-jakarta)" }}
           >
             © 2026 BUTO Mimarlık. Tüm hakları saklıdır.
           </span>
-          
+
           <div className="flex items-center gap-8">
             <a href="#hakkimizda" className="text-xs text-ink/70 hover:text-earth tracking-[0.2em] uppercase transition-colors" style={{ fontFamily: "var(--font-jakarta)" }}>
               Hakkımızda
@@ -183,8 +200,8 @@ export default function Contact() {
           </div>
         </div>
 
-        <div className="mt-8 flex justify-center">
-          <button 
+        <div className="relative z-10 mt-6 flex justify-center">
+          <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="flex flex-col items-center gap-2 group"
             aria-label="Yukarı Dön"
@@ -201,7 +218,7 @@ export default function Contact() {
         </div>
 
         {/* Credit */}
-        <div className="mt-10 text-center">
+        <div className="relative z-10 mt-6 text-center">
           <span
             className="text-[10px] text-mist/60 tracking-[0.3em] uppercase"
             style={{ fontFamily: "var(--font-jakarta)" }}

@@ -59,7 +59,7 @@ export default function TopBar({ visible, phase }: TopBarProps) {
           <div className="relative w-8 h-8 md:w-10 md:h-10 flex-shrink-0 transition-transform duration-500 group-hover:scale-105">
             <Image
               src="/brand/buto-mark.png"
-              alt="BUTO Logo"
+              alt="BUTO Mimarlık logo"
               fill
               className="object-contain transition-all duration-500"
               style={{
@@ -107,6 +107,16 @@ export default function TopBar({ visible, phase }: TopBarProps) {
           }}
         >
           Hakkımızda
+        </a>
+        <a
+          href="#hizmetler"
+          className="text-xs tracking-[0.25em] uppercase hover:text-earth transition-colors duration-300"
+          style={{
+            fontFamily: "var(--font-jakarta)",
+            color: onDark ? "rgba(245,240,232,0.75)" : "#1a1209",
+          }}
+        >
+          Hizmetler
         </a>
         <a
           href="#projeler"

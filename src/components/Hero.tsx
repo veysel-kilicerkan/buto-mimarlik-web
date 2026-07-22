@@ -3,14 +3,13 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Image from "next/image";
 import MagneticButton from "./MagneticButton";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
-  const logoRef = useRef<HTMLDivElement>(null);
+  const logoRef = useRef<HTMLHeadingElement>(null);
   const taglineRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const scrollIndicatorRef = useRef<HTMLDivElement>(null);
@@ -75,15 +74,17 @@ export default function Hero() {
       ref={sectionRef}
       className="relative min-h-screen flex flex-col items-center justify-center bg-cream overflow-hidden"
     >
-      {/* Subtle background image */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/projects/toraman-tekstil/toraman-tekstil-mimari-proje-kusbakisi.jpg"
-          alt="Mimari Arkaplan"
-          fill
-          className="object-cover opacity-[0.15] mix-blend-multiply grayscale-[30%]"
-        />
-      </div>
+      {/* Subtle background — tiled blueprint texture, not a single stretched photo */}
+      <div
+        className="absolute inset-0 z-0 opacity-[0.1] mix-blend-multiply"
+        style={{
+          backgroundImage:
+            "url('/images/projects/mavi_arkaplan/mimari-teknik-cizim-arkaplan-deseni.jpg')",
+          backgroundRepeat: "repeat",
+          backgroundSize: "300px 300px",
+          backgroundPosition: "center",
+        }}
+      />
 
       {/* Subtle texture overlay */}
       <div
@@ -95,22 +96,28 @@ export default function Hero() {
       />
 
       <div className="relative z-10 flex flex-col items-center gap-8 text-center px-6">
-        {/* Logo */}
-        <div ref={logoRef} style={{ opacity: 0 }}>
-          <span
-            className="block text-6xl md:text-8xl lg:text-9xl tracking-[0.25em] text-ink"
-            style={{ fontFamily: "var(--font-playfair)" }}
-          >
-            BUTO
+        {/* Logo / page H1 — visually just the "BUTO / Mimarlık" wordmark, but carries
+            the full keyword-rich brand line for search engines via sr-only text */}
+        <h1 ref={logoRef} style={{ opacity: 0 }}>
+          <span className="sr-only">
+            BUTO Mimarlık — İstanbul Mimarlık ve İç Mimarlık Ofisi
           </span>
-          <div className="mt-2 h-px w-24 md:w-32 mx-auto bg-earth" />
-          <span
-            className="block mt-2 text-xs tracking-[0.5em] text-mist uppercase"
-            style={{ fontFamily: "var(--font-jakarta)" }}
-          >
-            Mimarlık
+          <span aria-hidden="true">
+            <span
+              className="block text-6xl md:text-8xl lg:text-9xl tracking-[0.25em] text-ink"
+              style={{ fontFamily: "var(--font-playfair)" }}
+            >
+              BUTO
+            </span>
+            <div className="mt-2 h-px w-24 md:w-32 mx-auto bg-earth" />
+            <span
+              className="block mt-2 text-xs tracking-[0.5em] text-mist uppercase"
+              style={{ fontFamily: "var(--font-jakarta)" }}
+            >
+              Mimarlık
+            </span>
           </span>
-        </div>
+        </h1>
 
         {/* Tagline */}
         <p

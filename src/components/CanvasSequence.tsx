@@ -292,7 +292,7 @@ export default function CanvasSequence({ onComplete }: CanvasSequenceProps) {
 
           {/* Brand mark — revealed first, alone, over the villa's glass wall */}
           <div ref={markRef} style={{ opacity: 0, marginBottom: 26 }}>
-            <BrandMark size={44} invert />
+            <BrandMark size={68} invert />
           </div>
 
           <div ref={textBlockRef} className="flex flex-col items-center" style={{ opacity: 0 }}>

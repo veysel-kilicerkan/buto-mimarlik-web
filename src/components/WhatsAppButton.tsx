@@ -8,11 +8,24 @@ export default function WhatsAppButton() {
 
   useEffect(() => {
     if (!btnRef.current) return;
-    gsap.fromTo(
+
+    const tl = gsap.timeline({ delay: 1.2 });
+    tl.fromTo(
       btnRef.current,
       { opacity: 0, scale: 0.7, y: 20 },
-      { opacity: 1, scale: 1, y: 0, duration: 0.6, ease: "back.out(1.4)", delay: 1.2 }
-    );
+      { opacity: 1, scale: 1, y: 0, duration: 0.6, ease: "back.out(1.4)" }
+    ).to(btnRef.current, {
+      scale: 1.12,
+      duration: 0.9,
+      ease: "power1.inOut",
+      repeat: -1,
+      yoyo: true,
+      repeatDelay: 1.6,
+    });
+
+    return () => {
+      tl.kill();
+    };
   }, []);
 
   return (
@@ -22,12 +35,16 @@ export default function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="WhatsApp ile iletişime geçin"
-      className="fixed bottom-5 right-5 md:bottom-6 md:right-6 z-[60] w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#25D366] shadow-[0_4px_20px_rgba(37,211,102,0.45),0_2px_8px_rgba(0,0,0,0.2)] flex items-center justify-center transition-[transform,box-shadow] duration-200 ease-out hover:scale-110 hover:shadow-[0_6px_28px_rgba(37,211,102,0.6),0_2px_10px_rgba(0,0,0,0.25)]"
+      className="fixed bottom-9 right-9 md:bottom-12 md:right-12 z-[60] w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#25D366] shadow-[0_4px_24px_rgba(37,211,102,0.55),0_2px_10px_rgba(0,0,0,0.25)] flex items-center justify-center transition-shadow duration-200 ease-out hover:shadow-[0_6px_32px_rgba(37,211,102,0.7),0_2px_12px_rgba(0,0,0,0.3)]"
       style={{ opacity: 0 }}
     >
+      {/* Attention rings */}
+      <span className="absolute inset-0 rounded-full bg-[#25D366]/60 animate-ping pointer-events-none" />
+      <span className="absolute -inset-2 rounded-full border-2 border-[#25D366]/30 pointer-events-none" />
+
       {/* WhatsApp SVG icon */}
       <svg
-        className="w-6 h-6 md:w-7 md:h-7"
+        className="relative w-8 h-8 md:w-9 md:h-9"
         viewBox="0 0 24 24"
         fill="white"
         xmlns="http://www.w3.org/2000/svg"

@@ -94,3 +94,34 @@
     image-rendering: auto;
   }
 }
+
+/* Slow continuous scale pulse ("breathing") for project imagery */
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.055);
+  }
+}
+
+.animate-breathe {
+  animation: breathe 7s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Typewriter caret blink for service card copy */
+@keyframes caret-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-caret {
+  animation: caret-blink 0.8s step-end infinite;
+}
