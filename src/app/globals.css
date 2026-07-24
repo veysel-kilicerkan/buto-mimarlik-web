@@ -64,7 +64,13 @@
   }
 
   canvas {
-    touch-action: none;
+    /* pan-y (not none): the hero canvas covers the full viewport and its
+       scroll-jacked animation depends on real vertical touch-scroll
+       reaching the page. `none` blocks that scroll gesture entirely on
+       real touchscreens (desktop mouse wheel and Chrome DevTools' device
+       toolbar don't enforce touch-action, so this only breaks on an
+       actual phone) — pan-y still blocks pinch-zoom/horizontal pan. */
+    touch-action: pan-y;
     display: block;
   }
 
